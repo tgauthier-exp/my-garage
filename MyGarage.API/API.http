@@ -1,0 +1,14 @@
+@API_HostAddress = https://localhost:44341
+
+GET {{API_HostAddress}}/vehicles/
+Accept: application/json
+
+###
+
+GET {{API_HostAddress}}/vehicles/type/motorcycle
+Accept: application/json
+
+###
+
+GET {{API_HostAddress}}/vehicles/brand/kawasaki
+Accept: application/json

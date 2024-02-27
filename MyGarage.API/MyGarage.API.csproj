@@ -4,6 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+	<ProjectGuid>50cfd16d-2cf8-492e-874f-2f116f7f376f</ProjectGuid>
     <UserSecretsId>50cfd16d-2cf8-492e-874f-2f116f7f376f</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>

@@ -9,6 +9,7 @@ namespace MyGarage.API.Endpoints
         {
             var group = endpoints
                 .MapGroup("/vehicles")
+                .WithTags("Vehicles")
                 .WithOpenApi();
 
             group

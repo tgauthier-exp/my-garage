@@ -28,5 +28,8 @@ export default defineConfig({
         passphrase: "localhost",
     },
     port: 44340,
+    watch: {
+      usePolling: true
+    },
   }
 })

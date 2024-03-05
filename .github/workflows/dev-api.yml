@@ -1,0 +1,37 @@
+name: development - api
+
+on: 
+  push:
+    branches: ["develop"]
+  workflow_dispatch:
+
+permissions:
+    id-token: write
+    contents: read
+
+jobs:
+  build:
+    name: Build Job
+    runs-on: ubuntu-latest
+    environment:
+      name: development
+    
+    steps:
+      # checkout the repo
+    - name: Download Sources
+      uses: actions/checkout@v4
+
+    - name: Log in to Azure
+      uses: azure/login@v2
+      with:
+        client-id: ${{ secrets.AZURE_CLIENT_ID }}
+        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+    - name: Login to Azure Container Registry
+      run: az acr login --name ${{ secrets.AZURE_ACR_NAME }}
+
+    - name: 'Build and push image'
+      run: |
+        docker build . -f "MyGarage.API/Dockerfile" -t ${{ secrets.AZURE_REGISTRY_LOGIN_SERVER }}/mygarage-api:dev
+        docker push ${{ secrets.AZURE_REGISTRY_LOGIN_SERVER }}/mygarage-api:dev

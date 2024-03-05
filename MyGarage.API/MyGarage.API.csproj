@@ -11,8 +11,6 @@
 	<RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
 	<DisableImplicitNuGetFallbackFolder>true</DisableImplicitNuGetFallbackFolder>
 	<RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
-	<GenerateDocumentationFile>true</GenerateDocumentationFile>
-	<DocumentationFile>bin\$(Configuration)\$(TargetFramework)\dotnet-swagger.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

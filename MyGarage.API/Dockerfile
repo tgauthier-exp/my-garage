@@ -10,14 +10,17 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["MyGarage.API/MyGarage.API.csproj", "MyGarage.API/"]
-RUN dotnet restore "./MyGarage.API/MyGarage.API.csproj"
+COPY ["MyGarage.Application/MyGarage.Application.csproj", "MyGarage.Application/"]
+COPY ["MyGarage.Domain/MyGarage.Domain.csproj", "MyGarage.Domain/"]
+COPY ["MyGarage.Infrastructure/MyGarage.Infrastructure.csproj", "MyGarage.Infrastructure/"]
+RUN dotnet restore "./MyGarage.API/./MyGarage.API.csproj"
 COPY . .
 WORKDIR "/src/MyGarage.API"
-RUN dotnet build "./MyGarage.API.csproj" -c $BUILD_CONFIGURATION -o /app/build
+RUN dotnet build "./MyGarage.API.csproj" -c "$BUILD_CONFIGURATION" -o /app/build
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./MyGarage.API.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./MyGarage.API.csproj" -c "$BUILD_CONFIGURATION" -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app

@@ -1,8 +1,9 @@
 version: '3.4'
-
+name: mygarage
 services:
   mygarage.api:
-    image: ${DOCKER_REGISTRY-}mygarage-api
+    container_name: mygarage.api
+    image: ${DOCKER_REGISTRY-}mygarage-api:dev
     build:
       context: .
       dockerfile: MyGarage.API/Dockerfile

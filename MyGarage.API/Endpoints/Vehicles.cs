@@ -3,8 +3,15 @@ using MyGarage.Domain;
 
 namespace MyGarage.API.Endpoints
 {
+    /// <summary>
+    /// Vehicles endpoints
+    /// </summary>
     public static class Vehicles
     {
+        /// <summary>
+        /// All vehicles endpoints
+        /// </summary>
+        /// <param name="endpoints"></param>
         public static void MapVehicles(this IEndpointRouteBuilder endpoints)
         {
             var group = endpoints

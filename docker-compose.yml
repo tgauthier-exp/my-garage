@@ -7,3 +7,9 @@ services:
     build:
       context: .
       dockerfile: MyGarage.API/Dockerfile
+  mygarage.web:
+    container_name: mygarage.web
+    image: ${DOCKER_REGISTRY-}mygarage-web:dev
+    build:
+      context: ./MyGarage.Web
+      dockerfile: Dockerfile
